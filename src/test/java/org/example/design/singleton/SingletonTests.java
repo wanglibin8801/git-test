@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 
 public class SingletonTests {
 
@@ -14,7 +15,18 @@ public class SingletonTests {
     @Test
     public void testHungrySingleton() {
 
-        Comple
+        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(new Supplier<Integer>() {
+            @Override
+            public Integer get() {
+                return null;
+            }
+        }, new Executor() {
+            @Override
+            public void execute(Runnable command) {
+
+            }
+        });
+
     }
 
 }
